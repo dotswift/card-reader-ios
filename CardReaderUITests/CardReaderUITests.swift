@@ -1,11 +1,4 @@
-//
-//  CardReaderUITests.swift
-//  CardReaderUITests
-//
-//  Created by Khalid Asad on 2021-05-05.
-//
-
-import XCTest
+mport XCTest
 
 class CardReaderUITests: XCTestCase {
 

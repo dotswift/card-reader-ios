@@ -1,10 +1,3 @@
-//
-//  CardReaderTests.swift
-//  CardReaderTests
-//
-//  Created by Khalid Asad on 2021-05-05.
-//
-
 import XCTest
 @testable import CardReader
 

@@ -1,12 +1,18 @@
-//
-//  CardDetails.swift
-//  CardReader
-//
-//  Created by Khalid Asad on 2021-05-06.
-//
-
 import Foundation
 import SwiftUI
+
+public enum InsuranceType: String, CaseIterable, Identifiable {
+    public var id: Int { hashValue }
+
+    case aetna = "aetna"
+    case united = "united healthcare"
+    case blueCross = "blue cross blue shield"
+}
+
+public struct InsuranceDetails: Hashable, Identifiable {
+    public var id: Int { hashValue }
+    public let insuranceProvider: String
+}
 
 public struct CardDetails: Hashable, Identifiable {
     public var number: String?

@@ -1,10 +1,3 @@
-//
-//  MainView.swift
-//  CardReader
-//
-//  Created by Khalid Asad on 2021-05-06.
-//
-
 import Foundation
 import SwiftUI
 
@@ -30,10 +23,15 @@ public struct CardFormView: View {
     public var body: some View {
         ScrollView(.vertical) {
             VStack {
-                CreditCardView(backgroundColors: colors, cardNumber: $cardNumber, cardExpiryDate: $cardExpiryDate, cardName: $cardName)
-                    .shadow(color: .primaryColor, radius: 5)
-                    .padding(.top, 60)
-                                
+                Spacer()
+//                if InsuranceDetails. == nil {
+//                    CreditCardView(backgroundColors: colors, cardNumber: $cardNumber, cardExpiryDate: $cardExpiryDate, cardName: $cardName)
+//                        .shadow(color: .primaryColor, radius: 5)
+//                        .padding(.top, 60)
+//                                    
+//                } else {
+//                }
+
                 if cardIndustry != .unknown {
                     Text(cardIndustry.rawValue)
                         .font(.system(size: 14))
@@ -60,44 +58,7 @@ public struct CardFormView: View {
                 }
                 .padding(.top, 30)
                 .padding(.bottom, 20)
-                                
-                VStack(alignment: .center) {
-                    VStack(alignment: .leading, spacing: 10) {
-                        CardFormField(fieldTitle: "Card Number", text: $cardNumber, isCreditCardNumber: true)
-                            .keyboardType(.numberPad)
-                                            
-                        CardFormField(fieldTitle: "Card Name", text: $cardName, autocapitalizationType: .words)
-                            .keyboardType(.alphabet)
-                        
-                        HStack(spacing: 20) {
-                            CardFormField(fieldTitle: "Card Expiry Date", text: $cardExpiryDate, isExpiryDate: true)
-                                .keyboardType(.numberPad)
-                            
-                            CardFormField(fieldTitle: "CVC #", text: $cvcNumber)
-                                .keyboardType(.numberPad)
-                        }
-                    }
-                                        
-                    Button(action: {
-                        let cardInfo = CardDetails(
-                            numberWithDelimiters: cardNumber,
-                            name: cardName,
-                            expiryDate: cardExpiryDate,
-                            cvcNumber: cvcNumber
-                        )
-                        completion(cardInfo)
-                    }) {
-                        HStack(alignment: .center) {
-                            Text("Submit")
-                                .font(.system(size: 26, weight: .bold, design: .default))
-                        }
-                        .foregroundColor(Color.white)
-                        .padding(.all, 12)
-                        .background(Color.buttonColor)
-                        .cornerRadius(12)
-                    }
-                    .padding(.top, 26)
-                }
+
                 .sheet(isPresented: $isShowingSheet) {
                     CardReaderView() { cardDetails in
                         print(cardDetails ?? "")
